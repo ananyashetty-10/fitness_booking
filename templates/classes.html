@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fitness Classes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f7f9fc;
+            color: #333;
+            margin: 0;
+            padding: 2rem;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+        .classes-list {
+            max-width: 700px;
+            margin: 0 auto;
+            list-style: none;
+            padding: 0;
+        }
+        .class-item {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+            margin-bottom: 1.5rem;
+            padding: 1.25rem 1.5rem;
+            transition: box-shadow 0.3s ease;
+        }
+        .class-item:hover {
+            box-shadow: 0 5px 15px rgb(0 0 0 / 0.2);
+        }
+        .class-name {
+            font-size: 1.5rem;
+            color: #27ae60;
+            margin-bottom: 0.5rem;
+        }
+        .class-details {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #555;
+        }
+        .no-classes {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #888;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Available Fitness Classes</h1>
+
+    {% if classes %}
+        <ul class="classes-list">
+            {% for fitness_class in classes %}
+                <li class="class-item">
+                    <div class="class-name">{{ fitness_class.name }}</div>
+                    <div class="class-details">
+                        <strong>Instructor:</strong> {{ fitness_class.instructor }}<br />
+                        <strong>Date & Time:</strong> {{ fitness_class.datetime|date:"F j, Y, g:i a" }}<br />
+                        <strong>Available Slots:</strong> {{ fitness_class.available_slots }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-classes">No fitness classes available.</p>
+    {% endif %}
+</body>
+</html>

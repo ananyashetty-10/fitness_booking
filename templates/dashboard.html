@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            color: #333;
+            max-width: 500px;
+            margin: 60px auto;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+        ul li {
+            margin-bottom: 1rem;
+        }
+        ul li a {
+            display: block;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        ul li a:hover {
+            background: #2980b9;
+            box-shadow: 0 4px 12px rgb(0 0 0 / 0.2);
+        }
+        a.logout {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: #e74c3c;
+            color: #fff;
+            font-weight: 700;
+            padding: 14px 0;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgb(0 0 0 / 0.2);
+            transition: background-color 0.3s ease;
+        }
+        a.logout:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome to your Dashboard, {{ user.username }}!</h2>
+    <p>This is your dashboard page after login.</p>
+
+    <ul>
+        <li><a href="{% url 'get_classes' %}">View All Classes</a></li>
+        <li><a href="{% url 'book_class' %}">Book a Class</a></li>
+        <li><a href="{% url 'get_bookings' %}">View Your Bookings</a></li>
+    </ul>
+
+    <a href="{% url 'logout' %}" class="logout">Logout</a>
+</body>
+</html>
